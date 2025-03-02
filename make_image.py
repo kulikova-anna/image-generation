@@ -45,6 +45,7 @@ def save_pic(list_abv):
     list = dict_list[list_abv]['data']
     dict_param = dict_list[list_abv]['parameters']
     dir_save = dict_list[list_abv]['dir_save']
+    function.delete_files_in_folder(dir_save)
     for key in list:
         imgname = key
         quantity_staff = len(list[key])
@@ -77,5 +78,5 @@ def all_save():
     save_pic('HB')
     save_pic('S')
 
-save_pic('HB')
+# save_pic('HB')
 

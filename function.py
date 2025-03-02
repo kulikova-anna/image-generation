@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
 import textwrap
+import os
 
 
 nameFont = ImageFont.truetype(r"C:\Users\KULIK\AppData\Local\Microsoft\Windows\Fonts\RobotoMedium.ttf", 95)
@@ -58,3 +59,14 @@ def add_in_list(day, employee_information, list):
     else:
         list[day] = [employee_information]
 
+def delete_files_in_folder(folder):
+    folder_path = (r'D:\Python\HappyBirthday\готово\{save}'.format(save=folder))
+    for filename in os.listdir(folder_path):
+        file_path = os.path.join(folder_path, filename)
+        try:
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+        except Exception as e:
+            print(f'Ошибка при удалении файла {file_path}. {e}')
+
+#delete_files_in_folder('Начальники_Юбилей')

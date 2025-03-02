@@ -60,7 +60,7 @@ def add_in_list(day, employee_information, list):
         list[day] = [employee_information]
 
 def delete_files_in_folder(folder):
-    folder_path = (r'D:\Python\HappyBirthday\готово\{save}'.format(save=folder))
+    folder_path = (r'.\готово\{save}'.format(save=folder))
     for filename in os.listdir(folder_path):
         file_path = os.path.join(folder_path, filename)
         try:

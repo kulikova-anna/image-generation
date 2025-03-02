@@ -70,7 +70,7 @@ def save_pic(list_abv):
 
             function.make_HB_pic(img_draw, list[key], start_name, left_margin, fill_name, indent, start_post, fill_post, width)
             # img.show()
-            img.save(r"D:\Python\HappyBirthday\готово\{dir_save}\{imgname}.jpg".format(dir_save=dir_save, imgname=imgname))
+            img.save(r".\готово\{dir_save}\{imgname}.jpg".format(dir_save=dir_save, imgname=imgname))
             print(f'{imgname} - сохранено')
 
 def all_save():
@@ -78,5 +78,5 @@ def all_save():
     save_pic('HB')
     save_pic('S')
 
-# save_pic('HB')
+save_pic('HB')
 

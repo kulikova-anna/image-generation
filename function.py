@@ -3,8 +3,8 @@ import textwrap
 import os
 
 
-font_name = ImageFont.truetype(r"C:\Users\KULIK\AppData\Local\Microsoft\Windows\Fonts\RobotoMedium.ttf", 95)
-font_post = ImageFont.truetype(r"C:\Users\KULIK\AppData\Local\Microsoft\Windows\Fonts\RobotoLightItalic.ttf", 50)
+nameFont = ImageFont.truetype(r"C:\Users\KULIK\AppData\Local\Microsoft\Windows\Fonts\RobotoMedium.ttf", 95)
+workFont = ImageFont.truetype(r"C:\Users\KULIK\AppData\Local\Microsoft\Windows\Fonts\RobotoLightItalic.ttf", 50)
 
 # make_image
 def name_length (text, width):
@@ -25,48 +25,23 @@ def creat_pic(size, image):
     img_draw = ImageDraw.Draw(img)
     return img, img_draw
 
-# def text_in_pic (img_draw, list, type_text, start, fill, font, left_margin, indent, width, plus):
-#     for person in list:
-#         text_line = person.split('!')[type_text]
-#         if type_text==0:
-#             paragraphs = name_length(text_line, width)
-#         else:
-#             paragraphs = post_length(text_line)
-#         no = 0
-#         for line in paragraphs:
-#             wf = start + no
-#             img_draw.text((left_margin, wf), line, fill=fill, font=font)
-#             no += plus
-#         start += indent
-
-def text_in_pic (img_draw, list, type_text, class_img):
+def text_in_pic (img_draw, list, part, start, fill, font, left_margin, indent, width, plus):
     for person in list:
-        text_line = person.split('!')[type_text]
-        if type_text == 'name':
-            paragraphs = name_length(text_line, class_img.width)
-            start = class_img.start_name
-            fill = class_img.fill_name
-            font = font_name
-            plus = 100
-        elif type_text == 'post':
-            paragraphs = post_length(text_line)
-            start = class_img.start_post
-            fill = class_img.fill_post
-            font = font_post
-            plus = 60
+        text_line = person.split('!')[part]
+        if part==0:
+            paragraphs = name_length(text_line, width)
         else:
-            print('Error - type_text может принимать значение name или post')
-            break
+            paragraphs = post_length(text_line)
         no = 0
         for line in paragraphs:
             wf = start + no
-            img_draw.text((class_img.left_margin, wf), line, fill=fill, font=font)
+            img_draw.text((left_margin, wf), line, fill=fill, font=font)
             no += plus
-        start += class_img.indent
+        start += indent
 
-def make_HB_pic(img_draw, list, class_img):
-    text_in_pic(img_draw, list, 'name', class_img)
-    text_in_pic(img_draw, list, 'post', class_img)
+def make_HB_pic(img_draw, list, start_name, left_margin, fill_name, indent, start_post, fill_post, width):
+    text_in_pic(img_draw, list, 0, start_name, fill_name, nameFont, left_margin, indent, width, 100)
+    text_in_pic(img_draw, list, 1, start_post, fill_post, workFont, left_margin, indent, width, 60)
 
 
 # make_database

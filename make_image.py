@@ -78,5 +78,5 @@ def all_save():
     save_pic('HB')
     save_pic('S')
 
-save_pic('HB')
+# save_pic('HB')
 
